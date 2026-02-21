@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(211, 208, 208);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
+    background-color: white;
+    
+}
+a{
+    font-family: algerian;
+    text-decoration: none;
+    color: black;
+}
+p{
+     font-family: algerian;
+      color: black;
+}
+h3{
+     font-family: algerian;
+      color: black;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

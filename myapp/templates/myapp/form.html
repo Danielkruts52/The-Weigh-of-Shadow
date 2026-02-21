@@ -1,0 +1,96 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %}
+
+{% block title %}Support{% endblock %} 
+
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/form.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<h3 style="text-align: center;">Support form</h3>
+<div class="center">
+    <div class="column">
+        <h5>for the applicant</h5>
+        <div class="also">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/cc/43/70/cc43706d9cc504a64d7b635107a2ee1c.jpg" alt="">
+                <div class="overlay">
+                    <h5>Become more than a shadow</h5>
+                    <p>for those who are looking for a job and share our values</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/be/3e/8a/be3e8a8e69bcae09e6e95dd92d3c80c7.jpg" alt="">
+                <div class="overlay">
+                    <h5>Among their own</h5>
+                    <p>We have a fairly young community, so if you're 16-18 years old, feel free to join</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/5b/7b/a4/5b7ba4a7ba678b241e8ad3d8a0876665.jpg" alt="">
+                <div class="overlay">
+                    <h5>Different view</h5>
+                    <p>We believe that people with disabilities have the right to work.</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.name}}
+            {{form.last_name}}
+            {{form.number}}
+            {{form.email}}
+            {{form.type}}
+            {{form.text}}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="column">
+        <h5>For business</h5>
+        <div class="also">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/1200x/6c/c1/9e/6cc19e4cf8434e64fa632e16957e238a.jpg" alt="">
+                <div class="overlay">
+                    <h5>Presence</h5>
+                    <p>We are ready to accept even the most absurd suggestions</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="https://i.pinimg.com/1200x/6d/97/e9/6d97e98333138ceaaaee2c91fcc34a77.jpg" alt="">
+                <div class="overlay">
+                    <h5>Investing in eternity</h5>
+                    <p>For those who are willing to invest in the "shadows"</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="https://i.pinimg.com/1200x/2e/65/fc/2e65fc867340967d49dcaccec47d21b3.jpg" alt="">
+                <div class="overlay">
+                    <h5>Shelter</h5>
+                    <p>If you are ready to open the doors for our supporters</p>
+                    <a href="#" class="small-btn">Fill the form</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span style="display: flex; justify-content: center; font-family: algerian;">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+</span>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/layout.css' %}">
+    {% block style_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="start">
+             <h3>The Weight of shadow</h3>
+        </div>
+        <div class="center">
+            <div><a href="{% url 'main' %}">Main</a></div>
+        <div><a href=''>Catalog</a></div>
+        <div><a href="{% url 'contact' %}">Contact</a></div>
+        <div><a href="{% url 'form' %}">Support</a></div>
+        </div>
+        <div class="end">
+            <button class="header-button">Register</button>
+            <button class="header-button">Login</button>
+        </div>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+    <hr>
+    <footer>
+        <div class="column">
+            <h3>The Weight of shadow</h3>
+            <a href="{% url 'about' %}">About us</a>
+        </div>
+
+        <div class="column">
+            <h3>Central Office</h3>
+            <p>+1-889-774-2251</p>
+        </div>
+    </footer>
+    {% block carousel_js %}
+{% endblock %}
+</body>
+</html>
