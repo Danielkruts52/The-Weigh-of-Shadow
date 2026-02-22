@@ -1,4 +1,43 @@
 {% extends 'myapp/layout.html' %} 
+{% load static %}
 
-{% block title %}About{% endblock %}
+{% block title %}About{% endblock %} 
+
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/about.css' %}" />
+{% endblock %}
  
+{% block content %}
+<h3 style="text-align: center;">The outsider's story</h3>
+<div class="central">
+  <div>
+    <img
+      src="https://i.pinimg.com/736x/df/68/5a/df685a85b8609d5eb3e691af422b4a0a.jpg"
+      alt=""
+    />
+  </div>
+  <div class="column">
+    <div>
+        <p>
+      In the city of Surrey, a boy named Tony couldn't find common ground with
+      his peers. He didn't like football or shooters; he preferred to create
+      rather than destroy. He enjoyed drawing and sewing. Many people found him
+      peculiar, but being in the minority doesn't make you insane. In 2022,
+      Tomie began designing clothing that reflected the pain hidden within "our
+      shadows." Videos of his clothes went viral on TikTok, and many teenagers
+      and people who were tired of the absurd world found solace in his work and
+      decided to support him. Now, he has become the largest clothing brand in
+      Canada and the Northwest United States. Tommy has created something that
+      we lack in a world of digital noise. The brand "The weight of shadow"
+      allows us to hear ourselves in this noise.
+    </p>
+    </div>
+    <br>
+    <div>
+        <a class="search-button" href="">Catalog</a>
+        <a class="search-button" href="">Shops</a>
+        <a class="search-button" href="">Community</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

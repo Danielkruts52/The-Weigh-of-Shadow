@@ -12,16 +12,14 @@
       <div class="slide">
         <div class="slide-image">
           <img
-            src="https://i.pinimg.com/originals/a2/5a/48/a25a482506e7734cd446a15e4d8dafd2.jpg"
-            alt="Горы"
+            src="{% static 'myapp/img/main.jpg' %}"
           />
         </div>
         <div class="slide-content">
           <h3>The weight of shadow</h3>
           <p>
             In a world where shadows have weight, our clothes help us carry that
-            weight. The weight of Shadow is not afraid to talk about our shadows
-            (a reference to Kierkegaard), but are you ready to become a cry from
+            weight. The weight of Shadow is not afraid to talk about our shadows, but are you ready to become a cry from
             the soul?
           </p>
           <a href="{% url 'about' %}" class="slide-button">About us</a>
@@ -32,14 +30,14 @@
       <div class="slide">
         <div class="slide-image">
           <img
-            src="https://avatars.mds.yandex.net/i?id=944139ab44dad9525610e309ab9fa077af87d584-3509819-images-thumbs&n=13"
-            alt="Море"
+            src="{% static 'myapp/img/modern.jpg' %}"
+            alt="Modern Minimalism"
           />
         </div>
         <div class="slide-content">
-          <h2>ЛАЗУРНЫЙ БЕРЕГ</h2>
-          <p>text</p>
-          <a href="" class="slide-button">ПОДРОБНЕЕ</a>
+          <h3>Modern minimalism</h3>
+          <p>Minimalism is an attempt to find authenticity in life by shedding the masks of consumption imposed by society, in order to finally hear the quiet voice of one's own freedom in the void.</p>
+          <a href="" class="slide-button">View the collection</a>
         </div>
       </div>
 
@@ -90,6 +88,7 @@
     <span class="dot"></span>
   </div>
 </div>
-{% endblock %} {% block carousel_js %}
+{% endblock %} 
+{% block carousel_js %}
 <script src="{% static 'myapp/js/carousel.js' %}"></script>
 {% endblock %}

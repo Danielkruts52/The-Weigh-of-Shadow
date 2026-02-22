@@ -1,3 +1,16 @@
 {% extends 'myapp/layout.html' %} 
 
+{% load static %} 
 {% block title %}Contact{% endblock %} 
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/contact.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="center">
+    <a class="contact-button" href="">Shops</a>
+    <a class="contact-button" href="">Offices</a>
+    <a class="contact-button" href="">Community centers</a>
+    <a class="contact-button" href="">Phone numbers Security</a>
+</div>
+{% endblock %}
