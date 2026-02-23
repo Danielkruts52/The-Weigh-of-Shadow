@@ -1,0 +1,24 @@
+h3{
+    text-align: center;
+}
+h5{
+    font-family: algerian;
+    color: black;
+}
+.main_keys {
+    min-height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+   align-items: center;
+   gap: 20px;
+}
+.keys {
+    display: flex;
+    width: 450px;
+    height: 250px;
+    flex-direction: column;
+    background-color: rgb(230, 227, 227);
+    border-radius: 10px;
+    text-align: center;
+}

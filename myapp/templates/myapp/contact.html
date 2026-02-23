@@ -8,9 +8,9 @@
 
 {% block content %}
 <div class="center">
-    <a class="contact-button" href="">Shops</a>
+    <a class="contact-button" href="{% url 'contact:shop' %}">Shops</a>
     <a class="contact-button" href="">Offices</a>
     <a class="contact-button" href="">Community centers</a>
-    <a class="contact-button" href="">Phone numbers Security</a>
+    <a class="contact-button" href="{% url 'contact:support' %}">Phone numbers Security</a>
 </div>
 {% endblock %}

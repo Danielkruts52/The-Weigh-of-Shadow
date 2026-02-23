@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
+    path('contact/', include('contact.urls', namespace='contact'))
 ]
 
 # Добавляем обработку статических и медиа файлов в режиме разработки
