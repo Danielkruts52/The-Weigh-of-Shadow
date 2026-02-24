@@ -1,0 +1,22 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %} 
+{% block title %}Community{% endblock %} 
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'contact/css/contact.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<h3>Community</h3>
+<div class="main_keys">
+{% for el in list_community %}
+<div class="keys">
+   <h5>Country: {{el.type}}</h5>
+   <h5>City: {{el.city}}</h5>
+   <p>Address: {{el.address}}</p>
+   <p>Phone number: {{el.phone_number}}</p>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

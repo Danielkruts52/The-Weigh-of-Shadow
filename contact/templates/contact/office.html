@@ -1,0 +1,23 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %} 
+{% block title %}Shop{% endblock %} 
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'contact/css/contact.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<h3>Office</h3>
+<div class="main_keys">
+{% for el in list_office %}
+<div class="keys">
+    <h3>{{el.name}}</h3>
+   <h5>Country: {{el.type}}</h5>
+   <h5>City: {{el.city}}</h5>
+   <p>Address: {{el.address}}</p>
+   <p>Phone number: {{el.phone_number}}</p>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}
