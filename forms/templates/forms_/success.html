@@ -1,0 +1,13 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %} 
+{% block title %}Community{% endblock %} 
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'forms/css/layout.css' %}">
+{% endblock %}
+{% block content %}
+<div class="block_center">
+    <h3>success</h3>
+    <a href="{% url 'form:disabled' %}">To return</a>
+</div>
+{% endblock %}
