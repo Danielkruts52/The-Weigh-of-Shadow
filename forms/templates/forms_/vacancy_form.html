@@ -1,0 +1,21 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %} 
+{% block title %}Community{% endblock %} 
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'forms/css/layout.css' %}">
+{% endblock %} 
+
+{% block content %}
+<div class="block_center">
+    <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.name_and_surname}}
+            {{form.type}}
+            {{form.category}}
+            {{form.level}}
+            {{form.text}}
+            {{form.resume_file}}
+            <button type="submit">Submit</button>
+</div>
+{% endblock %}
