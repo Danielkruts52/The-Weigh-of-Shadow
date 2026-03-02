@@ -11,9 +11,7 @@
     <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.name_and_surname}}
-            {{form.type}}
-            {{form.category}}
-            {{form.level}}
+            {{form.years}}
             {{form.phone_number}}
             {{form.email}}
             {{form.resume_file}}
