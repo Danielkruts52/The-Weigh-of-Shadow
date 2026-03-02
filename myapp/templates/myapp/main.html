@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <!-- СЛАЙД 3: Город -->
+      <!-- СЛАЙД 3: Акции -->
       <div class="slide">
         <div class="slide-image">
           <img
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <!-- СЛАЙД 4: Лес -->
+      <!-- СЛАЙД 4: Март -->
       <div class="slide">
         <div class="slide-image">
           <img
@@ -77,6 +77,25 @@
           <a href="" class="slide-button">Click</a>
         </div>
       </div>
+
+<!-- СЛАЙД 5: Рик и Морти -->
+      <div class="slide">
+        <div style="height: 500px;" class="slide-image">
+          <img
+            src="{% static 'myapp/img/Weight_Rick.png' %}"
+            alt="Город"
+          />
+        </div>
+        <div class="slide-content">
+          <h3>The weihgt of Shadow & Rick and Morty</h3>
+          <p>
+            Experience the absurdity of our world with The weight of Shadow & Rick and Morty limited edition collection
+          </p>
+          <p>Until the end of the event: <span id="countdown-timer"></span> </p>
+          <a href="" class="slide-button">Forward</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -94,9 +113,57 @@
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
+    <span class="dot"></span>
   </div>
 </div>
 {% endblock %} 
 {% block carousel_js %}
 <script src="{% static 'myapp/js/carousel.js' %}"></script>
+<script>
+// Функция для обновления таймера
+function updateCountdown() {
+    // Устанавливаем целевую дату (12 марта 2026 года)
+    const targetDate = new Date(2026, 2, 12, 0, 0, 0); // 12 марта 2026 00:00:00
+    const currentDate = new Date();
+    
+    // Вычисляем разницу в миллисекундах
+    const difference = targetDate - currentDate;
+    
+    // Получаем элемент для отображения таймера
+    const timerElement = document.getElementById('countdown-timer');
+    
+    // Проверяем, существует ли элемент
+    if (!timerElement) {
+        console.error('Элемент countdown-timer не найден!');
+        return;
+    }
+    
+    // Проверяем, не наступила ли уже целевая дата
+    if (difference <= 0) {
+        timerElement.textContent = "Акция закончилась!";
+        clearInterval(timerInterval);
+        return;
+    }
+    
+    // Вычисляем дни, часы, минуты и секунды
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    
+    // Форматируем вывод
+    const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = seconds.toString().padStart(2, '0');
+    
+    // Обновляем текст
+    timerElement.textContent = `${days}day ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+// Запускаем таймер после полной загрузки страницы
+document.addEventListener('DOMContentLoaded', function() {
+    updateCountdown(); // Запускаем сразу
+    const timerInterval = setInterval(updateCountdown, 1000); // Обновляем каждую секунду
+});
+</script>
 {% endblock %}

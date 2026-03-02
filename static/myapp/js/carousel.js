@@ -51,3 +51,43 @@
     
     updateCarousel();
 })();
+
+
+// Функция для обновления таймера
+function updateCountdown() {
+    // Устанавливаем целевую дату (12 марта 2026 года)
+    // Месяцы в JS начинаются с 0, поэтому март - это 2
+    const targetDate = new Date(2026, 2, 12, 0, 0, 0); // 12 марта 2026 00:00:00
+    const currentDate = new Date();
+    
+    // Вычисляем разницу в миллисекундах
+    const difference = targetDate - currentDate;
+    
+    // Получаем элемент для отображения таймера
+    const timerElement = document.getElementById('countdown-timer');
+    
+    // Проверяем, не наступила ли уже целевая дата
+    if (difference <= 0) {
+        timerElement.textContent = "Акция закончилась!";
+        clearInterval(timerInterval);
+        return;
+    }
+    
+    // Вычисляем дни, часы, минуты и секунды
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    
+    // Форматируем вывод (добавляем ведущие нули для красоты)
+    const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = seconds.toString().padStart(2, '0');
+    
+    // Обновляем текст
+    timerElement.textContent = `${days}д ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+// Запускаем таймер
+updateCountdown(); // Запускаем сразу, чтобы не ждать первую секунду
+const timerInterval = setInterval(updateCountdown, 1000); // Обновляем каждую секунду
