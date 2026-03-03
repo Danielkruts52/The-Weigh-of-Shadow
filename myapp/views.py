@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Form
 from .forms import Contactform
 from django.contrib import messages
@@ -12,7 +12,7 @@ def form(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your message has been successfully sent!')
-            form = Contactform()
+            return redirect('suc')
         else:
             messages.error(request, 'The form is filled out incorrectly')
     else:
@@ -28,5 +28,8 @@ def Contact(request):
 
 def About(request):
     return render(request, 'myapp/about.html')
+
+def Suc(request):
+    return render(request,'myapp/suc.html')
 
 

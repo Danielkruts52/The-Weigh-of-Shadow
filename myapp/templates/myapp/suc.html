@@ -1,0 +1,18 @@
+{% extends 'myapp/layout.html' %} 
+{% load static %} 
+
+{% block title %}Successfully{% endblock %} 
+
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'myapp/css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'forms/css/layout.css' %}">
+{% endblock %}
+{% block content %} 
+<div style="min-height: 80vh; display: flex; align-items: center; flex-direction: column; justify-content: center;">
+    <h3 style="text-align: center;">Successfully</h3>
+<span style="display: flex; justify-content: center;"><a href="{% url 'form' %}">Go back</a></span>
+</div>
+{% endblock %}
+
+
+
