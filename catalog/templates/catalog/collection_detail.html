@@ -298,15 +298,7 @@
 <div class="items-grid" id="itemsGrid">
     {% for item in items %}
     <div class="item-card" data-price="{{ item.price }}">
-        {% if item.image %}
-        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="item-image">
-        {% elif item.image2 %}
-        <img src="{{ item.image2 }}" alt="{{ item.name }}" class="item-image">
-        {% else %}
-        <div class="item-image" style="background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-            <span>No image</span>
-        </div>
-        {% endif %}
+        <img src="{{ item.get_absolute_url }}" alt="{{ item.name }}" class="item-image">
         
         <div class="item-info">
             <span class="item-type-badge">{{ item.type|title }}</span>
