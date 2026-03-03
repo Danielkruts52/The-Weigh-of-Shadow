@@ -1,13 +1,27 @@
 {% extends 'myapp/layout.html' %} 
 {% load static %} 
-{% block title %}Community{% endblock %} 
+
+{% block title %}Успех{% endblock %} 
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'myapp/css/form.css' %}" />
 <link rel="stylesheet" href="{% static 'forms/css/layout.css' %}">
 {% endblock %}
+
 {% block content %}
 <div class="block_center">
-    <h3>success</h3>
-    <a href="{% url 'form:disabled' %}">To return</a>
+    <h3>Successfully submitted</h3>
+    
+    {% if form_type %}
+        <p>Form <strong>"{{ form_display_name }}"</strong> successfully submitted.</p>
+        <p>Thank you for your application!</p>
+    {% else %}
+        <p>Your form has been successfully submitted. Thank you!</p>
+    {% endif %}
+    <br>
+    <br>
+    <div>
+        <a href="{% url return_url %}" class="btn btn-primary">Go back</a>
+    </div>
 </div>
 {% endblock %}
