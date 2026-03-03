@@ -84,13 +84,5 @@
     </div>
 </div>
 
-<span style="display: flex; justify-content: center; font-family: algerian;">
-    {% if messages %}
-    {% for message in messages %}
-        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
-</span>
+
 {% endblock %}

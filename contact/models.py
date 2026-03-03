@@ -7,7 +7,7 @@ class Support(models.Model):
         ('CA', 'CA')
     ]
     name = models.CharField(max_length=200)
-    type = models.CharField(max_length=3, choices=country, default='CA')  # Добавил max_length=3
+    type = models.CharField(max_length=3, choices=country, default='CA')
     phone_number = models.CharField(max_length=20)
     def __str__(self):
         return self.name
