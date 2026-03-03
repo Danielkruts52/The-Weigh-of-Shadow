@@ -7,7 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
     path('contact/', include('contact.urls', namespace='contact')),
-    path('form/',include('forms.urls', namespace= 'form'))
+    path('form/',include('forms.urls', namespace= 'form')),
+    path('catalog/', include('catalog.urls', namespace='collections'))
 ]
 
 # Добавляем обработку статических и медиа файлов в режиме разработки
