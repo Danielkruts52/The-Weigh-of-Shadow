@@ -29,6 +29,12 @@ class T_shirt(models.Model):
     text = models.TextField('about')
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        if not self.image or self.image.url.endswith("null"):
+            print(self.image2)
+            return self.image2
+        return self.image.url
 
 class Sweatshirt(models.Model):
     type_collections = [
@@ -47,7 +53,12 @@ class Sweatshirt(models.Model):
     def __str__(self):
         return self.name
 
-
+    
+    def get_absolute_url(self):
+        if  not self.image or self.image.url.endswith("null"):
+            print(self.image2)
+            return self.image2
+        return self.image.url
 
 
 

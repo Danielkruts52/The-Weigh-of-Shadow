@@ -253,11 +253,7 @@
     
     <div class="item-main">
         <div class="item-gallery">
-            {% if item.image %}
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="item-main-image">
-            {% elif item.image2 %}
-            <img src="{{ item.image2 }}" alt="{{ item.name }}" class="item-main-image">
-            {% endif %}
+            <img src="{{ item.get_absolute_url }}" alt="{{ item.name }}" class="item-main-image">
         </div>
         
         <div class="item-details">
@@ -323,7 +319,7 @@
                 <div class="similar-item">
                     <a href="{% url 'collections:t_shirt_detail' similar.id %}" style="text-decoration: none; color: inherit;">
                         {% if similar.image %}
-                        <img src="{{ similar.image.url }}" alt="{{ similar.name }}" class="similar-image">
+                        <img src="{{ similar.get_absolute_url }}" alt="{{ similar.name }}" class="similar-image">
                         {% endif %}
                         <div class="similar-info">
                             <div class="similar-name">{{ similar.name|upper }}</div>
