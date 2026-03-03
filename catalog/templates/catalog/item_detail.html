@@ -318,9 +318,7 @@
                 {% for similar in similar_items %}
                 <div class="similar-item">
                     <a href="{% url 'collections:t_shirt_detail' similar.id %}" style="text-decoration: none; color: inherit;">
-                        {% if similar.image %}
                         <img src="{{ similar.get_absolute_url }}" alt="{{ similar.name }}" class="similar-image">
-                        {% endif %}
                         <div class="similar-info">
                             <div class="similar-name">{{ similar.name|upper }}</div>
                             <div class="similar-price">${{ similar.price_numeric|floatformat:2 }}</div>
@@ -332,9 +330,7 @@
                 {% for similar in similar_sweatshirts %}
                 <div class="similar-item">
                     <a href="{% url 'collections:sweatshirt_detail' similar.id %}" style="text-decoration: none; color: inherit;">
-                        {% if similar.image %}
-                        <img src="{{ similar.image.url }}" alt="{{ similar.name }}" class="similar-image">
-                        {% endif %}
+                        <img src="{{ similar.get_absolute_url }}" alt="{{ similar.name }}" class="similar-image">
                         <div class="similar-info">
                             <div class="similar-name">{{ similar.name|upper }}</div>
                             <div class="similar-price">${{ similar.price_numeric|floatformat:2 }}</div>
@@ -347,9 +343,7 @@
                 {% for similar in similar_items %}
                 <div class="similar-item">
                     <a href="{% url 'collections:sweatshirt_detail' similar.id %}" style="text-decoration: none; color: inherit;">
-                        {% if similar.image %}
-                        <img src="{{ similar.image.url }}" alt="{{ similar.name }}" class="similar-image">
-                        {% endif %}
+                        <img src="{{ similar.get_absolute_url }}" alt="{{ similar.name }}" class="similar-image">
                         <div class="similar-info">
                             <div class="similar-name">{{ similar.name|upper }}</div>
                             <div class="similar-price">${{ similar.price_numeric|floatformat:2 }}</div>
@@ -361,9 +355,7 @@
                 {% for similar in similar_t_shirts %}
                 <div class="similar-item">
                     <a href="{% url 'collections:t_shirt_detail' similar.id %}" style="text-decoration: none; color: inherit;">
-                        {% if similar.image %}
-                        <img src="{{ similar.image.url }}" alt="{{ similar.name }}" class="similar-image">
-                        {% endif %}
+                        <img src="{{ similar.get_absolute_url }}" alt="{{ similar.name }}" class="similar-image">
                         <div class="similar-info">
                             <div class="similar-name">{{ similar.name|upper }}</div>
                             <div class="similar-price">${{ similar.price_numeric|floatformat:2 }}</div>

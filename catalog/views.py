@@ -107,6 +107,7 @@ def special_collection_detail(request, collection_name):
             'structure': t_shirt.structure,
             'price': price,
             'text': t_shirt.text,
+            "get_absolute_url": sweatshirt.get_absolute_url,
         })
     
     for sweatshirt in sweatshirts:
@@ -126,6 +127,7 @@ def special_collection_detail(request, collection_name):
             'structure': sweatshirt.structure,
             'price': price,
             'text': sweatshirt.text,
+            "get_absolute_url": sweatshirt.get_absolute_url,
         })
     
     min_price = min(all_prices) if all_prices else 0
