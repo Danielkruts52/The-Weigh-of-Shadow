@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'contact',
     'forms',
     'community',
-    'catalog'
+    'catalog',
 ]
 
 MIDDLEWARE = [

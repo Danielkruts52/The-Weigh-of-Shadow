@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-    path('contact/', include('contact.urls', namespace='contact')),
-    path('form/',include('forms.urls', namespace= 'form')),
-    path('catalog/', include('catalog.urls', namespace='collections'))
+    path('contact/', include('contact.urls')),  # Убрал namespace
+    path('form/', include('forms.urls')),  # Убрал namespace
+    path('catalog/', include('catalog.urls')),  # Убрал namespace, так как app_name уже есть
 ]
 
 # Добавляем обработку статических и медиа файлов в режиме разработки

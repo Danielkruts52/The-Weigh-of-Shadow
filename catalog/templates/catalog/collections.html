@@ -2,7 +2,6 @@
 {% load static %} 
 {% block title %}Collections{% endblock %} 
 {% block style_css %}
-<link rel="stylesheet" href="{% static 'contact/css/contact.css' %}" />
 <style>
     .header-button {
         font-family: algerian;
@@ -41,6 +40,7 @@
     }
     
     .keys p {
+        font-family: algerian;
         flex-grow: 1;
         margin-bottom: 20px;
     }
@@ -48,6 +48,10 @@
     .keys .header-button {
         align-self: flex-start;
         margin-top: auto;
+    }
+    
+    h3 {
+        font-family: algerian;
     }
 </style>
 {% endblock %} 
@@ -60,7 +64,8 @@
 <div class="keys">
     <h3 style="color: {{el.color}};">{{el.name}}</h3>
     <p style="color: {{el.color}};">{{el.text}}</p>
-    <a class="header-button" style="color: {{el.color}}; border-color: {{el.color}};" href="">Purchase</a>
+    <a class="header-button" style="color: {{el.color}}; border-color: {{el.color}};" 
+       href="{% url 'collections:collection_detail' el.name %}">VIEW COLLECTION</a>
 </div>
 {% endfor %}
 </div>
@@ -71,7 +76,8 @@
 <div class="keys">
     <h3 style="color: {{el.color}};">{{el.name}}</h3>
     <p style="color: {{el.color}};">{{el.text}}</p>
-    <a class="header-button" style="color: {{el.color}}; border-color: {{el.color}};" href="">Purchase</a>
+    <a class="header-button" style="color: {{el.color}}; border-color: {{el.color}};" 
+       href="{% url 'collections:special_collection_detail' el.name %}">VIEW COLLECTION</a>
 </div>
 {% endfor %}
 </div>
