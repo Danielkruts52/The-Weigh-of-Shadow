@@ -15,32 +15,48 @@
         </div>
         <div class="center">
             <div><a href="{% url 'main' %}">Main</a></div>
-        <div><a href="{% url 'collections:collec' %}">Catalog</a></div>
-        <div><a href="{% url 'contact' %}">Contact</a></div>
-        <div><a href="{% url 'form' %}">Support</a></div>
-        <div><a href="">Community</a></div>
+            <div><a href="{% url 'collections:collec' %}">Catalog</a></div>
+            <div><a href="{% url 'contact' %}">Contact</a></div>
+            <div><a href="{% url 'form' %}">Support</a></div>
+            <div><a href="">Community</a></div>
         </div>
         <div class="end">
-            <button class="header-button">Register</button>
-            <button class="header-button">Login</button>
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:profile' %}" class="header-button">PROFILE</a>
+                <a href="{% url 'users:logout' %}" class="header-button">LOGOUT</a>
+            {% else %}
+                <!-- ИСПРАВЛЕНО: Добавлены правильные URL -->
+                <a href="{% url 'users:register' %}" class="header-button">REGISTER</a>
+                <a href="{% url 'users:login' %}" class="header-button">LOGIN</a>
+            {% endif %}
         </div>
     </header>
+    
+    {% if messages %}
+    <div style="max-width: 1200px; margin: 20px auto; padding: 0 20px;">
+        {% for message in messages %}
+        <div style="font-family: algerian; padding: 10px; border: 2px solid black; background: #f9f9f9; margin-bottom: 10px;">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
     {% block content %}
-
     {% endblock %}
+    
     <hr>
     <footer>
         <div class="column">
             <h3>The Weight of shadow</h3>
             <a href="{% url 'about' %}">About us</a>
         </div>
-
         <div class="column">
             <h3>Central Office</h3>
             <p>+1-889-774-2251</p>
         </div>
     </footer>
     {% block carousel_js %}
-{% endblock %}
+    {% endblock %}
 </body>
 </html>

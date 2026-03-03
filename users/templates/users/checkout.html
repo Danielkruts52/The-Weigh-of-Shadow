@@ -1,0 +1,101 @@
+{% extends 'myapp/layout.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock %}
+{% block style_css %}
+<style>
+    .checkout-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        border: 2px solid black;
+    }
+    
+    .checkout-container h1 {
+        font-family: algerian;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .order-summary {
+        margin-bottom: 30px;
+    }
+    
+    .order-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .order-item h3 {
+        font-family: algerian;
+    }
+    
+    .total-price {
+        font-family: algerian;
+        font-size: 24px;
+        text-align: right;
+        margin: 20px 0;
+        padding-top: 20px;
+        border-top: 2px solid black;
+    }
+    
+    .confirm-btn {
+        font-family: algerian;
+        width: 100%;
+        padding: 15px;
+        background: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .confirm-btn:hover {
+        background: white;
+        color: black;
+        border: 2px solid black;
+    }
+    
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-family: algerian;
+        color: black;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="checkout-container">
+    <h1>CHECKOUT</h1>
+    
+    <div class="order-summary">
+        <h2 style="font-family: algerian; margin-bottom: 20px;">Order Summary</h2>
+        
+        {% for item in cart_items %}
+        <div class="order-item">
+            <div>
+                <h3>{{ item.get_item.name }}</h3>
+                <p style="font-family: algerian;">Size: {{ item.size }} | Quantity: {{ item.quantity }}</p>
+            </div>
+            <div style="font-family: algerian; font-weight: bold;">
+                ${{ item.get_total_price|floatformat:2 }}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="total-price">
+            TOTAL: ${{ total_price|floatformat:2 }}
+        </div>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="confirm-btn">CONFIRM ORDER</button>
+    </form>
+    
+    <a href="{% url 'users:profile' %}" class="back-link">← Back to Cart</a>
+</div>
+{% endblock %}

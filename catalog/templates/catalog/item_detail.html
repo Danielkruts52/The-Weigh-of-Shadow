@@ -300,7 +300,16 @@
             </div>
             
             <div class="item-actions">
-                <button class="buy-button" onclick="addToCart()">ADD TO CART</button>
+                {% if user.is_authenticated %}
+    <form method="post" action="{% url 'users:add_to_cart' item_type item.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="size" id="selectedSize" value="S">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="buy-button">ADD TO CART</button>
+    </form>
+{% else %}
+    <a href="{% url 'users:login' %}?next={{ request.path }}" class="buy-button" style="text-align: center; text-decoration: none;">LOGIN TO BUY</a>
+{% endif %}
             </div>
         </div>
     </div>
@@ -375,6 +384,14 @@
     const basePrice = parseFloat('{{ item.price_numeric }}');
     const totalPriceElement = document.getElementById('totalPrice');
     
+
+document.querySelectorAll('input[name="size"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        document.getElementById('selectedSize').value = this.value;
+    });
+});
+
+
     // Обновление цены при выборе размера
     document.querySelectorAll('input[name="size"]').forEach(radio => {
         radio.addEventListener('change', function() {

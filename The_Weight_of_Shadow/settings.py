@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'forms',
     'community',
     'catalog',
+    'users'
 ]
 
 MIDDLEWARE = [

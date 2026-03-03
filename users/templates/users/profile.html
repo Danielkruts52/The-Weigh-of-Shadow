@@ -1,0 +1,231 @@
+{% extends 'myapp/layout.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block style_css %}
+<style>
+    .profile-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        border: 2px solid black;
+    }
+    
+    .user-info h1 {
+        font-family: algerian;
+        margin-bottom: 10px;
+    }
+    
+    .user-info p {
+        font-family: algerian;
+        color: #666;
+    }
+    
+    .logout-button {
+        font-family: algerian;
+        padding: 10px 20px;
+        background: white;
+        border: 2px solid black;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        transition: all 0.3s ease;
+    }
+    
+    .logout-button:hover {
+        background: black;
+        color: white;
+    }
+    
+    .cart-section {
+        border: 2px solid black;
+        padding: 20px;
+    }
+    
+    .cart-section h2 {
+        font-family: algerian;
+        margin-bottom: 20px;
+    }
+    
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+    
+    .item-info {
+        flex: 2;
+    }
+    
+    .item-info h3 {
+        font-family: algerian;
+        margin-bottom: 5px;
+    }
+    
+    .item-info p {
+        font-family: algerian;
+        color: #666;
+        font-size: 14px;
+    }
+    
+    .item-quantity {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .quantity-form {
+        display: inline;
+    }
+    
+    .quantity-btn {
+        font-family: algerian;
+        padding: 5px 10px;
+        background: white;
+        border: 2px solid black;
+        cursor: pointer;
+        font-size: 16px;
+        min-width: 30px;
+    }
+    
+    .quantity-btn:hover {
+        background: black;
+        color: white;
+    }
+    
+    .item-price {
+        flex: 1;
+        font-family: algerian;
+        font-weight: bold;
+        text-align: right;
+    }
+    
+    .remove-btn {
+        font-family: algerian;
+        padding: 5px 10px;
+        background: white;
+        border: 2px solid red;
+        color: red;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    .remove-btn:hover {
+        background: red;
+        color: white;
+    }
+    
+    .cart-total {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid black;
+        text-align: right;
+    }
+    
+    .cart-total h3 {
+        font-family: algerian;
+        font-size: 24px;
+    }
+    
+    .checkout-btn {
+        font-family: algerian;
+        display: inline-block;
+        padding: 15px 40px;
+        background: black;
+        color: white;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .checkout-btn:hover {
+        background: white;
+        color: black;
+        border: 2px solid black;
+    }
+    
+    .empty-cart {
+        font-family: algerian;
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="user-info">
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+        </div>
+        <a href="{% url 'users:logout' %}" class="logout-button">LOGOUT</a>
+    </div>
+    
+    <div class="cart-section">
+        <h2>YOUR CART</h2>
+        
+        {% if cart_items %}
+            {% for item in cart_items %}
+            <div class="cart-item">
+                <div class="item-info">
+                    <h3>{{ item.get_item.name }}</h3>
+                    <p>Size: {{ item.size }} | {{ item.get_item.structure }}</p>
+                </div>
+                
+                <div class="item-quantity">
+                    <form method="post" action="{% url 'users:update_cart' item.id %}" class="quantity-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="decrease">
+                        <button type="submit" class="quantity-btn">-</button>
+                    </form>
+                    
+                    <span style="font-family: algerian;">{{ item.quantity }}</span>
+                    
+                    <form method="post" action="{% url 'users:update_cart' item.id %}" class="quantity-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="increase">
+                        <button type="submit" class="quantity-btn">+</button>
+                    </form>
+                </div>
+                
+                <div class="item-price">
+                    ${{ item.get_total_price|floatformat:2 }}
+                </div>
+                
+                <form method="post" action="{% url 'users:update_cart' item.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="remove">
+                    <button type="submit" class="remove-btn">×</button>
+                </form>
+            </div>
+            {% endfor %}
+            
+            <div class="cart-total">
+                <h3>TOTAL: ${{ total_price|floatformat:2 }}</h3>
+                <a href="{% url 'users:checkout' %}" class="checkout-btn">CHECKOUT</a>
+            </div>
+        {% else %}
+            <div class="empty-cart">
+                <p>Your cart is empty</p>
+                <a href="{% url 'collections:collec' %}" class="checkout-btn" style="margin-top: 20px;">BROWSE COLLECTIONS</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
