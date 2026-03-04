@@ -18,7 +18,10 @@ class T_shirt(models.Model):
         ("Modern Minimalism", "Modern Minimalism"),
         ("The promise of hope","The promise of hope"),
         ("The Crying Machiavelli", "The Crying Machiavelli"),
-        ("Blood money", "Blood money")
+        ("Blood money", "Blood money"),
+        ("The March Collection", "The March Collection"),
+        ("The weihgt of Shadow & Rick and Morty", "The weihgt of Shadow & Rick and Morty")
+        
     ]
     image = models.ImageField(default='null', blank=True, null= True)
     image2 = models.URLField(max_length=250, blank= True, null=True)
@@ -41,7 +44,8 @@ class Sweatshirt(models.Model):
         ("Modern Minimalism", "Modern Minimalism"),
         ("The promise of hope","The promise of hope"),
         ("The Crying Machiavelli", "The Crying Machiavelli"),
-        ("Blood money", "Blood money")
+        ("Blood money", "Blood money"),
+        ("The March Collection", "The March Collection")
     ]
     image = models.ImageField(default='null', blank=True, null= True)
     image2 = models.URLField(max_length=250, blank=True, null= True)
