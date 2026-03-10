@@ -10,6 +10,7 @@ urlpatterns = [
     path('form/', include('forms.urls')),
     path('catalog/', include('catalog.urls')), 
     path('users/', include('users.urls')),
+    path('community/', include('community.urls'))
 ]
 
 

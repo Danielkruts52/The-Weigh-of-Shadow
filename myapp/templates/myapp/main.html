@@ -39,7 +39,7 @@
             the masks of consumption imposed by society, in order to finally
             hear the quiet voice of one's own freedom in the void.
           </p>
-          <a href="" class="slide-button">View the collection</a>
+          <a href="{% url 'collections:collec' %}" class="slide-button">View the collection</a>
         </div>
       </div>
 
@@ -57,7 +57,7 @@
             The shadows of plants are an integral part of us. Check out our
             environmental programs and save our future
           </p>
-          <a href="" class="slide-button">Learn</a>
+          <a href="{% url 'community:com' %}" class="slide-button">Learn</a>
         </div>
       </div>
 
@@ -74,7 +74,7 @@
           <p>
             March is greeted by a cold sun that promises warmth but fails to deliver it. It is a time of hope that cannot be shared with the world. The air is filled with the scent of melting snow and a longing for something bright that remains in the shadows.
           </p>
-          <a href="" class="slide-button">Click</a>
+          <a href="{% url 'collections:collec' %}" class="slide-button">Click</a>
         </div>
       </div>
 
@@ -92,7 +92,7 @@
             Experience the absurdity of our world with The weight of Shadow & Rick and Morty limited edition collection
           </p>
           <p>Until the end of the event: <span id="countdown-timer"></span> </p>
-          <a href="" class="slide-button">Forward</a>
+          <a href="{% url 'collections:collec' %}" class="slide-button">Forward</a>
         </div>
       </div>
 
@@ -122,8 +122,8 @@
 <script>
 // Функция для обновления таймера
 function updateCountdown() {
-    // Устанавливаем целевую дату (12 марта 2026 года)
-    const targetDate = new Date(2026, 2, 12, 0, 0, 0); // 12 марта 2026 00:00:00
+    // Устанавливаем целевую дату (19 марта 2026 года)
+    const targetDate = new Date(2026, 2, 19, 0, 0, 0); // 19 марта 2026 00:00:00
     const currentDate = new Date();
     
     // Вычисляем разницу в миллисекундах

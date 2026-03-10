@@ -18,7 +18,7 @@
             <div><a href="{% url 'collections:collec' %}">Catalog</a></div>
             <div><a href="{% url 'contact' %}">Contact</a></div>
             <div><a href="{% url 'form' %}">Support</a></div>
-            <div><a href="">Community</a></div>
+            <div><a href="{% url 'community:com' %}">Community</a></div>
         </div>
         <div class="end">
             {% if user.is_authenticated %}
@@ -53,7 +53,7 @@
         </div>
         <div class="column">
             <h3>Central Office</h3>
-            <p>+1-889-774-2251</p>
+            <p>+1-604-774-2251</p>
         </div>
     </footer>
     {% block carousel_js %}

@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-+&436b$1!e0a+^7_t!roxxwgm^x&2zbe4=nme1)k@z!-uqxlov
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG_PROPAGATE_EXCEPTIONS = False
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # ALLOWED_HOSTS = ["shwei.shop","www.shwei.shop","138.124.228.49"]
 ALLOWED_HOSTS = ["shwei.shop","www.shwei.shop",'localhost', "138.124.228.49", '127.0.0.1']
